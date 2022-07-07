@@ -83,11 +83,26 @@ def menu_selection(choice):
     pick = choices[choice-1]
     return pick
 
-# computer
-computer = menu_selection(rand_choice())
+# play another round
+def play_again():
+    again = False
+    again_choice = input('Play again? Y/N').upper()
+    if again_choice.upper() == 'Y' or again_choice == 'yes'.upper():
+        play()
+    else:
+        print('Thanks for playing')
 
-# user
-user = menu_selection(choice())
+# play the game
+def play():
+    # computer
+    computer = menu_selection(rand_choice())
 
-# compare user to computer
-who_wins(computer,user)
+    # user
+    user = menu_selection(choice())
+
+    # compare user to computer
+    who_wins(computer,user)
+    play_again()
+
+# run the game
+play()
